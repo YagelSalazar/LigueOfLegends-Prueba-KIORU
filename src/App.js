@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './App.css'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Elements from './components/Elements'
+import Info from './components/Info'
+import axios from 'axios'
+const API_URL = 'http://ddragon.leagueoflegends.com/cdn/9.24.2/data/es_MX/champion.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+
+
+  render() {
+
+    return (
+      <Router>
+        <div class="App">
+          <Switch>
+            <Route path="/" exact component={Elements}></Route>
+            <Route path="/info" component={Info}></Route>
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
-
 export default App;
