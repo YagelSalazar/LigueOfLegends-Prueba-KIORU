@@ -35,7 +35,11 @@ class Elements extends Component {
                     <img src={`http://ddragon.leagueoflegends.com/cdn/9.24.2/img/champion/${champion}.png`} alt=""/>
                     </div>
                     <div className="card-footer">
-                      <h1><Link to="/info">{champion}</Link></h1>
+                      <h1><Link to={{
+                        pathname: 'info',
+                        state: {
+                          champion: champions[champion]
+                        }}}>{champion}</Link></h1>
                     </div>
                   </div>
                 </div>
@@ -44,8 +48,7 @@ class Elements extends Component {
           </div>
         </div>
       );
-  
-  
     }
   }
+
   export default Elements;

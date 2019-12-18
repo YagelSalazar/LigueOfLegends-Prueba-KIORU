@@ -1,45 +1,17 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React from 'react';
 
-class Info extends Component {
+const Info = (props) => {
 
-    constructor() {
-        super()
-        this.state = {
-            name: '',
-            title: '',
-            image: ''
-        }
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    componentDidMount() {
-        const url = 'http://ddragon.leagueoflegends.com/cdn/9.24.2/data/es_MX/champion/Alistar.json';
-        axios.get(url).then(response => response.data)
-          .then((data) => {
-            this.setState({ champions: data.data })
-            //console.log(data)
-          })
-      }
-
-    handleChange(e) {
-        const { name, value } = e.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    render() {
-        const { champions } = this.state;
-        return (
-            <div>
-                <div className="container">
-        <h1>{this.champions}</h1>
-                    <img src={`http://ddragon.leagueoflegends.com/cdn/9.24.2/img/champion/Alistar.png`} alt=""/>
-                </div>
-            </div>
-        );
-    }
+  const { champion } = props.location.state;
+  console.log(champion)
+  return (
+    <div className="container">
+      <h1>{champion.name}</h1>
+      <img src={champion.image.full} alt=""></img>
+      <p>key: {champion.key}</p>
+      <p>title: {champion.title}</p>
+      <p>Desc: {champion.blurb}</p>
+    </div>
+  );
 }
-
 export default Info;

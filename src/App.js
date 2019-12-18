@@ -9,12 +9,27 @@ const API_URL = 'http://ddragon.leagueoflegends.com/cdn/9.24.2/data/es_MX/champi
 class App extends Component {
 
 
+  constructor(props){
+    super(props)
+    this.state = {
+      champions: []
+    }
+  }
+
+  componentDidMount() {
+    const url = API_URL;
+    axios.get(url).then(response => response.data)
+      .then((data) => {
+        this.setState({ champions: data.data })
+        //console.log(data)
+      })
+  }
 
   render() {
 
     return (
       <Router>
-        <div class="App">
+        <div className="App">
           <Switch>
             <Route path="/" exact component={Elements}></Route>
             <Route path="/info" component={Info}></Route>
